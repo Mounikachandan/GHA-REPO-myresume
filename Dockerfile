@@ -20,4 +20,4 @@ COPY myresume.py .
 EXPOSE 5000
 
 # Run with gunicorn for production (falls back to Flask dev server if not installed)
-CMD ["python", "app.py"]
+CMD ["python", "myresume.py"]
