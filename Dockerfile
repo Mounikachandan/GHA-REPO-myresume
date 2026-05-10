@@ -14,10 +14,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
-COPY myresume.py .
+COPY app.py .
 
 # Expose the port Flask runs on
 EXPOSE 5000
 
 # Run with gunicorn for production (falls back to Flask dev server if not installed)
-CMD ["python", "myresume.py"]
+CMD ["python", "app.py"]
