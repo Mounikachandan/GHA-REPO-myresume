@@ -120,14 +120,14 @@ jobs:
           echo "Updated task definition:"
           cat new-task-def.json
 
-      - name: Register new task definition revision
-        run: |
-          NEW_ARN=$(aws ecs register-task-definition \
-            --cli-input-json file://new-task-def.json \
-            --query 'taskDefinition.taskDefinitionArn' \
-            --output text)
-          echo "NEW_TASK_DEF_ARN=$NEW_ARN" >> $GITHUB_ENV
-          echo "Registered: $NEW_ARN"
+      - name: Render new task definition with updated image
+        id: render-task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition:  task-def.json
+          container-name:   ${{ env.ECS_CONTAINER_NAME }}
+          image:            ${{ needs.build-and-push.outputs.image_uri }}  # ← never empty
+
 
       - name: Update ECS service
         run: |
