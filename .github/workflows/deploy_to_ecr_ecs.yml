@@ -129,6 +129,13 @@ jobs:
           container-name:   ${{ env.ECS_CONTAINER_NAME }}
           image:            $IMAGE_FULL_URI  # ← never empty
 
+      - name: Register new task definition
+        id: register-task-def
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.render-task-def.outputs.task-definition }}
+          wait-for-service-stability: false # Set to true if you want the job to wait     
+
 
       - name: Update ECS service
         run: |
