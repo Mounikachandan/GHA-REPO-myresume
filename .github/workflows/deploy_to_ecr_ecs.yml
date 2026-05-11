@@ -120,6 +120,16 @@ jobs:
           echo "Updated task definition:"
           cat new-task-def.json
 
+      # Confirm IMAGE_URI is not empty before passing to render action
+      - name: Confirm IMAGE_URI before render
+        run: |
+          echo "IMAGE_URI = $IMAGE_FULL_URI"
+          if [ -z "$IMAGE_URI" ]; then
+            echo "IMAGE_URI is empty"
+            exit 1
+          fi
+          echo "✅ IMAGE_URI confirmed: $IMAGE_URI"
+
       - name: Render new task definition with updated image
         id: render-task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
