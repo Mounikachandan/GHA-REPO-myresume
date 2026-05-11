@@ -55,14 +55,14 @@ jobs:
       - name: Build, tag and push to ECR
         run: |
           SHORT_TAG="v-${GITHUB_SHA::7}"
-          FULL_URI="$ECR_REGISTRY/$ECR_REPO_NAME:$SHORT_TAG"
+          FULL_URI="$ECR_REGISTRY/$ECR_REPOSITORY:$SHORT_TAG"
 
           echo "Building: $FULL_URI"
           docker build -t $FULL_URI .
-          docker tag  $FULL_URI $ECR_REGISTRY/$ECR_REPO_NAME:latest
+          docker tag  $FULL_URI $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
           docker push $FULL_URI
-          docker push $ECR_REGISTRY/$ECR_REPO_NAME:latest
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
           # Save for next step
           echo "SHORT_TAG=$SHORT_TAG"   >> $GITHUB_ENV
