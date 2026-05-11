@@ -127,7 +127,7 @@ jobs:
         with:
           task-definition:  task-def.json
           container-name:   ${{ env.ECS_CONTAINER_NAME }}
-          image:            $IMAGE_FULL_URI  # ← never empty
+          image:            ${{ env.IMAGE_FULL_URI }}  # ← never empty
 
       - name: Register new task definition
         id: register-task-def
