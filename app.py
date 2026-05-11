@@ -5,11 +5,11 @@ app = Flask(__name__)
 # ── Resume Data ───────────────────────────────────────────────────────────────
 
 RESUME = {
-    "name": "Alex Johnson",
-    "title": "Senior Software Engineer",
-    "email": "alex.johnson@email.com",
+    "name": "Mounika Gottipalli",
+    "title": "Prinicipal Software Engineer",
+    "email": "mounika.chandan@gmail.com",
     "phone": "+1 (555) 123-4567",
-    "location": "San Francisco, CA",
+    "location": "India",
     "github": "github.com/alexjohnson",
     "linkedin": "linkedin.com/in/alexjohnson",
     "summary": "Software engineer with 7+ years building scalable web applications and distributed systems. Experienced in leading teams, designing APIs, and shipping production-grade code.",
